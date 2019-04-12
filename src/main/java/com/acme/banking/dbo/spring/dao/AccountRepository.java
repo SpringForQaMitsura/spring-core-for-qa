@@ -1,9 +1,12 @@
 package com.acme.banking.dbo.spring.dao;
 
 import com.acme.banking.dbo.spring.domain.Account;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.context.annotation.Profile;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public interface AccountRepository extends CrudRepository<Account, Long> {
+@Profile({"prod", "system-test"})
+public interface AccountRepository extends JpaRepository<Account, Long> {
 }
